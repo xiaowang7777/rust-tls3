@@ -21,6 +21,10 @@ impl From<Vec<u8>> for CipherSuiteType {
 }
 
 impl CipherSuite for CipherSuiteType {
+    fn from_vec(self: &Self, vec: Vec<u8>) -> Box<dyn CipherSuite> {
+        Box::new(Self::from(vec))
+    }
+
     fn to_vec(self) -> Vec<u8> {
         self.into()
     }
